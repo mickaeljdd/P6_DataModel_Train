@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pandas
+joblib
+scikit-learn==1.6.1
+catboost
+requests
+httpx
