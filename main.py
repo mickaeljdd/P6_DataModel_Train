@@ -14,6 +14,10 @@ class BuildingFeatures(BaseModel):
     HasSteam: bool
     HasNaturalGas: bool
     NumberofFloors: int
+    ComplianceStatus: str
+    ENERGYSTARScore: float
+    ZipCode: float
+    PrimaryPropertyType: str
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -31,7 +35,7 @@ async def lifespan(app: FastAPI):
     # Logique d'arrêt si nécessaire
 
 # Charger le modèle
-MODEL_PATH = "best_model_cat_gridsearch.joblib"
+MODEL_PATH = "best_model_xgb_gridsearch.joblib"
 model = None
 
 app = FastAPI(
@@ -63,7 +67,7 @@ def predict(features: BuildingFeatures):
         input_data = pd.DataFrame([features.dict()])
         
         # S'assurer que l'ordre des colonnes correspond aux données d'entraînement (de l'analyse du notebook)
-        # Colonnes attendues : ["YearBuilt", "PropertyGFATotal", "HasElectricity", "HasSteam", "HasNaturalGas", "NumberofFloors"]
+        # Colonnes attendues : ["YearBuilt", "PropertyGFATotal", "HasElectricity", "HasSteam", "HasNaturalGas", "NumberofFloors","ComplianceStatus","ENERGYSTARScore","ZipCode","PrimaryPropertyType"]
         # Note : SiteEnergyUseWN(kBtu) était la cible, donc elle n'est pas en entrée.
         
         # Faire la prédiction

@@ -25,14 +25,18 @@ def test_read_root(client):
 
 def test_predict(client):
     # Données exemples correspondant au schéma
-    # "YearBuilt", "PropertyGFATotal", "HasElectricity", "HasSteam", "HasNaturalGas", "NumberofFloors"
+    # "YearBuilt", "PropertyGFATotal", "HasElectricity", "HasSteam", "HasNaturalGas", "NumberofFloors","ComplianceStatus","ENERGYSTARScore","ZipCode","PrimaryPropertyType"
     payload = {
         "YearBuilt": 2000,
         "PropertyGFATotal": 50000,
         "HasElectricity": True,
         "HasSteam": False,
         "HasNaturalGas": True,
-        "NumberofFloors": 5
+        "NumberofFloors": 5,
+        "ComplianceStatus": "Compliant",
+        "ENERGYSTARScore" : 75.0,
+        "ZipCode" : 12345.0,
+        "PrimaryPropertyType" : "Infrequent",
     }
     
     response = client.post("/predict", json=payload)
