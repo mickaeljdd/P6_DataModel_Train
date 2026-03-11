@@ -66,6 +66,7 @@ Si tout est correct, vous verrez le message : `Tous les tests ont réussi !`
 - `test_api.py` : Script de test pour vérifier la santé, la racine, la documentation et la prédiction.
 - `requirements.txt` : Liste des dépendances Python.
 - `best_model_cat_gridsearch.joblib` : Le modèle de Machine Learning entraîné (CatBoost).
+- `best_model_xgb_gridsearch.joblib` : Le modèle de Machine Learning entraîné (XgbBoost).
 
 ## Déploiement sur Render.com
 
